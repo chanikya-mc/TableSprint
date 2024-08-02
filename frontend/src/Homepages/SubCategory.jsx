@@ -1,9 +1,21 @@
 import React, { useState } from 'react'
 import Menu from './Menu'
 import { useNavigate } from 'react-router-dom'
-
+import { ShowDelete } from './ShowDelete';
 function SubCategory() {
   const navigate=useNavigate();
+  const handleDeleteClick = () => {
+    ShowDelete(
+      "Are you sure you want to delete this item?",
+      () => {
+        // Add your delete logic here
+        console.log('Item deleted');
+      },
+      () => {
+        console.log('Delete cancelled');
+      }
+    );
+  };
 
   const [isuserexit, setIsUserExist] = useState(true)
   return (
@@ -40,7 +52,8 @@ function SubCategory() {
                   <td>image</td>
                   <td>Active</td>
                   <td>1</td>
-                  <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button> <button className='btn'><i className="bi bi-trash3-fill"></i></button></td>
+                  <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
                 </tr>
                 <tr itemScope="row " >
                   <td>1</td>
@@ -49,7 +62,8 @@ function SubCategory() {
                   <td>image</td>
                   <td>Active</td>
                   <td>1</td>
-                  <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button> <button className='btn'><i className="bi bi-trash3-fill"></i></button></td>
+                  <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
                 </tr>
 
               </table></div>

@@ -17,6 +17,10 @@ import EditCategory from './Homepages/EditCategory';
 import SubCategory from './Homepages/SubCategory';
 import SubAddCategory from './Homepages/AddSubCategory';
 import SubEditCategory from './Homepages/EditSubCategory';
+import AddProducts from './Homepages/AddProducts';
+import EditProduct from './Homepages/EditProduct';
+import ProductView from './Homepages/ProductView';
+import DeleteItem from './Homepages/DeleteItem';
 
 
 function App() {
@@ -37,6 +41,10 @@ function App() {
         <Route exact path='/editcategory' element={<EditCategory></EditCategory>}></Route>
         <Route exact path='/addsubcategory' element={<SubAddCategory></SubAddCategory>}></Route>
         <Route exact path='/editsubcategory' element={<SubEditCategory></SubEditCategory>}></Route>
+        <Route exact path='/addproducts' element={<AddProducts></AddProducts>}></Route>
+        <Route exact path='/editproduct' element={<EditProduct></EditProduct>}></Route>
+        <Route exact path='/productView' element={<ProductView></ProductView>}></Route>
+        <Route exact path='/deleteitem' element={<DeleteItem></DeleteItem>}></Route>
       </Routes>
     </BrowserRouter>
   );
