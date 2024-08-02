@@ -1,0 +1,36 @@
+.form-group {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.custom-input {
+  padding: 0.75rem 0.5rem 0.25rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.custom-label {
+  position: absolute;
+  top: -0.75rem; /* Adjust this value as needed */
+  left: 0.75rem; /* Adjust to align with the input box */
+  background: white;
+  padding: 0 0.25rem;
+  font-size: 0.875rem;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.custom-input:focus + .custom-label,
+.custom-input:not(:placeholder-shown) + .custom-label {
+  top: -1.25rem; /* Adjust this value as needed */
+  left: 0.75rem; /* Adjust to align with the input box */
+  font-size: 0.75rem;
+  color: #007bff;
+}
