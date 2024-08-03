@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Menu from './Menu'
 import { useNavigate } from 'react-router-dom'
 import { ShowDelete } from './ShowDelete';
@@ -18,6 +18,17 @@ function Category() {
   };
 
   const [isuserexit, setIsUserExist] = useState(true)
+  useEffect(() => {
+    // Check if the JWT token exists in local storage
+    const token = localStorage.getItem('token');
+    if(token)
+    setIsUserExist(!!token);
+  else
+  {
+  setIsUserExist(false);
+  navigate("/login")
+  }
+}, [localStorage.getItem("token")]);
   return (
     <>
       {isuserexit && (
@@ -45,10 +56,28 @@ function Category() {
                   <th>Action</th>
                 </tr>
                 <tr itemScope="row">
-                  <td>1</td>
+                  <td>103</td>
                   <td>Tea</td>
-                  <td>image</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://www.teaforturmeric.com/wp-content/uploads/2021/11/Masala-Chai-Tea-Recipe-Card.jpg" alt="" /></td>
                   <td>Active</td>
+                  <td>1</td>
+                  <td><button className='btn' onClick={() => { navigate("/editcategory") }}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                <tr itemScope="row">
+                  <td>123</td>
+                  <td>Ghee</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPI8K4tv9gP-aViqRInJ5IYH3mdvOcDbyaow&s" alt="" /></td>
+                  <td>inActive</td>
+                  <td>2</td>
+                  <td><button className='btn' onClick={() => { navigate("/editcategory") }}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                <tr itemScope="row">
+                  <td>131</td>
+                  <td>dhal</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTteAFpe10JcAxv3bDPM__X0t8IXkp36KkJMA&s" alt="" /></td>
+                  <td>inActive</td>
                   <td>1</td>
                   <td><button className='btn' onClick={() => { navigate("/editcategory") }}><i className="bi bi-pencil-square "></i></button>
                    <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>

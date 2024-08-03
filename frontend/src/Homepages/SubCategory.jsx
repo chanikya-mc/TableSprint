@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Menu from './Menu'
 import { useNavigate } from 'react-router-dom'
 import { ShowDelete } from './ShowDelete';
@@ -18,6 +18,17 @@ function SubCategory() {
   };
 
   const [isuserexit, setIsUserExist] = useState(true)
+  useEffect(() => {
+    // Check if the JWT token exists in local storage
+    const token = localStorage.getItem('token');
+    if(token)
+    setIsUserExist(!!token);
+  else
+  {
+  setIsUserExist(false);
+  navigate("/login")
+  }
+}, [localStorage.getItem("token")]);
   return (
     <>
       {isuserexit && (
@@ -46,25 +57,39 @@ function SubCategory() {
                   <th>Action</th>
                 </tr>
                 <tr itemScope="row " >
-                  <td>1</td>
+                  <td>201</td>
                   <td>green tea</td>
-                  <td>Tea</td>
-                  <td>image</td>
+                  <td>tea</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://www.teaforturmeric.com/wp-content/uploads/2021/11/Masala-Chai-Tea-Recipe-Card.jpg" alt="" /></td>
+                
                   <td>Active</td>
                   <td>1</td>
                   <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button>
                    <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
                 </tr>
                 <tr itemScope="row " >
-                  <td>1</td>
-                  <td>green tea</td>
-                  <td>Tea</td>
-                  <td>image</td>
+                  <td>211</td>
+                  <td>Toor daal</td>
+                  <td>dall</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://www.healthyorganic.in/cdn/shop/products/organic-toor-dal-500x500_837491a8-755b-4548-b082-42c110c406aa_grande.jpg?v=1552055341" alt="" /></td>
+                
                   <td>Active</td>
                   <td>1</td>
                   <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button>
                    <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
                 </tr>
+                <tr itemScope="row " >
+                  <td>100</td>
+                  <td>Fortune</td>
+                  <td>Ghee & Oil</td>
+                  <td><img style={{width:"60px",height:"60px"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYNnwNkRT-FzaQqNOqdGuVgW2fHMhEMaui-Q&s" alt="" /></td>
+                
+                  <td>inActive</td>
+                  <td>10</td>
+                  <td><button className='btn' onClick={()=>{navigate("/editsubcategory")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                
 
               </table></div>
               {/* for table display */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Menu from './Menu'
 import { useNavigate } from 'react-router-dom'
 import { ShowDelete } from './ShowDelete';
@@ -18,6 +18,17 @@ function Products() {
   };
 
   const [isuserexit, setIsUserExist] = useState(true)
+  useEffect(() => {
+    // Check if the JWT token exists in local storage
+    const token = localStorage.getItem('token');
+    if(token)
+    setIsUserExist(!!token);
+  else
+  {
+  setIsUserExist(false);
+  navigate("/login")
+  }
+}, [localStorage.getItem("token")]);
   return (
     <>
       {isuserexit && (
@@ -46,11 +57,42 @@ function Products() {
                   <th>Action</th>
                 </tr>
                 <tr itemScope="row">
-                  <td>1</td>
-                  <td>Tea</td>
-                  <td>image</td>
+                  <td>112</td>
+                  <td>green Tea powder</td>
+                  <td> green tea</td>
+                  <td>tea</td>
                   <td>Active</td>
-                  <td>1</td>
+                 
+                  <td><button className='btn ' onClick={()=>{navigate("/productView")}}><i className="bi bi-eye"></i></button><button className='btn' onClick={()=>{navigate("/editproduct")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button> </td>
+                </tr>
+                <tr itemScope="row">
+                  <td>102</td>
+                  <td>fortune sunflower oil</td>
+                  <td> fortuen</td>
+                  <td>Ghee & Oil</td>
+                  <td>Active</td>
+                 
+                  <td><button className='btn ' onClick={()=>{navigate("/productView")}}><i className="bi bi-eye"></i></button><button className='btn' onClick={()=>{navigate("/editproduct")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button> </td>
+                </tr>
+                <tr itemScope="row">
+                  <td>182</td>
+                  <td>fortune vegitable oil</td>
+                  <td> fortuen</td>
+                  <td>Ghee & Oil</td>
+                  <td>Active</td>
+                 
+                  <td><button className='btn ' onClick={()=>{navigate("/productView")}}><i className="bi bi-eye"></i></button><button className='btn' onClick={()=>{navigate("/editproduct")}}><i className="bi bi-pencil-square "></i></button>
+                   <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button> </td>
+                </tr>
+                <tr itemScope="row">
+                  <td>102</td>
+                  <td>fortune groundnu oil</td>
+                  <td> fortuen</td>
+                  <td>Ghee & Oil</td>
+                  <td>Active</td>
+                 
                   <td><button className='btn ' onClick={()=>{navigate("/productView")}}><i className="bi bi-eye"></i></button><button className='btn' onClick={()=>{navigate("/editproduct")}}><i className="bi bi-pencil-square "></i></button>
                    <button className='btn' onClick={handleDeleteClick}><i className="bi bi-trash3-fill"></i></button> </td>
                 </tr>
